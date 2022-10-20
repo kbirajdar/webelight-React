@@ -2,9 +2,7 @@ import React, {useState } from 'react'
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 export default function DrillDown(props) {
-    const {setUser}=props;
     const [select,setSelect]=useState('')
-    const [value,setValue]=useState(false);
      
     const handleSelect=(e)=>{
       console.log(`id ${e.target.id}`);
