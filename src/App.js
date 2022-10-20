@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
 
+import './App.css';
+import Repos from './components/Repos';
+import { useEffect, useState } from 'react';
+import AppPagination from './components/AppPagination';
 function App() {
+  const[repoList,setRepoList]=useState([]);
+  const[page,setPage]=useState(1);
+  const[pageNumber,setPageNumber]=useState(10);
+
+ 
+  useEffect(()=>{
+    fetch(`https://api.github.com/search/repositories?q=created:%3E2022-09-22&sort=stars&order=desc&page=${page}`).then((res)=>res.json()).then((data)=>(setRepoList(data.items), setPageNumber(data.total_count)))
+  },[page])
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {repoList.map((item,index)=><p key={index}><Repos getItem={item} /></p>)}
+      
+      <AppPagination setPage={setPage} pageNumber={pageNumber}/>
     </div>
   );
 }
