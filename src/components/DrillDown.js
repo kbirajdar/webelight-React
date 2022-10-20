@@ -15,11 +15,11 @@ export default function DrillDown(props) {
     <div>
          <Select >
                 <MenuItem className="menu" id='Commits'
-                 onClick={()=>{handleSelect()}}>Commits</MenuItem>
+                 onClick={()=>{handleSelect()}} value={select}>Commits</MenuItem>
                 <MenuItem className="menu" id='Addition' 
-                onClick={handleSelect}>Addition</MenuItem>
+                onClick={handleSelect} value={select}>Addition</MenuItem>
                 <MenuItem className="menu" id='Deletion' 
-                onClick={handleSelect}>Deletion</MenuItem>
+                onClick={handleSelect} value={select}>Deletion</MenuItem>
          </Select>
         
 
